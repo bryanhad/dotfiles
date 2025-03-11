@@ -12,6 +12,19 @@ else
     echo "Fastfetch is already installed!"
 fi
 
+# Generate default Fastfetch config (if missing)
+if [ ! -f ~/.config/fastfetch/config.jsonc ]; then
+    echo "Generating default Fastfetch config..."
+    fastfetch --gen-config
+fi
+
+# Ensure Fastfetch config directory exists
+mkdir -p ~/.config/fastfetch
+
+# Replace the default config with the custom one
+echo "Applying custom Fastfetch config..."
+ln -sf ~/dotfiles/fastfetch_config.jsonc ~/.config/fastfetch/config.jsonc
+
 # Symlink Bash configuration files
 ln -sf ~/dotfiles/bashrc ~/.bashrc
 
