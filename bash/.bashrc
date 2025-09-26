@@ -123,3 +123,5 @@ fastfetch
 
 # Initialize Starship prompt
 eval "$(starship init bash)"
+
+tmux new -A -n main -s my-sess

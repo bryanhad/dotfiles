@@ -6,7 +6,8 @@
         "padding": {
             "top": 5,
             "left": 3
-        }
+        },
+        "color": {"1": "green"}
     },
     "modules": [
         "break",
