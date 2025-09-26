@@ -29,6 +29,11 @@ install_fastfetch() {
     # Clean up
     rm -f "$deb_file"
 
+    # ensures the fastfetch config exists
+    if [ ! -f "$HOME/.config/fastfetch/config.jsonc" ]; then
+        fastfetch --gen-config-full
+    fi
+
     echo "✅ fastfetch installed"
 }
 
@@ -105,7 +110,7 @@ fi
 
 # backup existing config files/dir if it already exists 
 backup_if_exists "$HOME/.bashrc"
-backup_if_exists "$HOME/.config/fastfetch" # directory
+backup_if_exists "$HOME/.config/fastfetch/config.jsonc"
 backup_if_exists "$HOME/.config/starship.toml"
 backup_if_exists "$HOME/.tmux.conf"
 
