@@ -41,12 +41,21 @@ install_starship() {
     echo "✅ starship installed"
 }
 
-backup_if_file_exists() {
+backup_if_exists() {
     local absolute_path="$1"
+    local suffix=".backup"
 
-    if [ -f "$absolute_path" ] && [ ! -L "$absolute_path" ]; then
-        echo "Backing up existing $absolute_path"
-        mv "$absolute_path" "$absolute_path.backup"
+    # skip symlinks
+    if [ -L "$absolute_path" ]; then
+        return
+    fi
+
+    if [ -f "$absolute_path" ]; then
+        echo "Backing up existing file $absolute_path"
+        mv "$absolute_path" "$absolute_path$suffix"
+    elif [ -d "$absolute_path" ]; then
+        echo "Backing up existing directory $absolute_path"
+        mv "$absolute_path" "$absolute_path$suffix"
     fi
 }
 
@@ -94,11 +103,11 @@ else
     exit 1
 fi
 
-# backup existing config files if it already exists 
-backup_if_file_exists "$HOME/.bashrc"
-backup_if_file_exists "$HOME/.config/fastfetch/config.jsonc"
-backup_if_file_exists "$HOME/.config/starship.toml"
-backup_if_file_exists "$HOME/.tmux.conf"
+# backup existing config files/dir if it already exists 
+backup_if_exists "$HOME/.bashrc"
+backup_if_exists "$HOME/.config/fastfetch" # directory
+backup_if_exists "$HOME/.config/starship.toml"
+backup_if_exists "$HOME/.tmux.conf"
 
 # Go into the dotfiles directory in ~
 cd "$SCRIPT_DIR"
