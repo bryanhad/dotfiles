@@ -17,6 +17,13 @@ if ! command -v stow &> /dev/null; then
     fi
 fi
 
+# backup existing .bashrc if it already exists 
+EXISTING_BASHRC="$HOME/.bashrc"
+if [ -f "$EXISTING_BASHRC" ] && [ ! -L "$EXISTING_BASHRC" ]; then
+    echo "Backing up existing $EXISTING_BASHRC"
+    mv "$EXISTING_BASHRC" "$EXISTING_BASHRC.backup"
+fi
+
 # Go into the dotfiles directory in ~
 cd "$SCRIPT_DIR"
 
