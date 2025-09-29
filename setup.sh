@@ -39,8 +39,8 @@ install_fastfetch() {
 
 install_starship() {
     echo "📦 Installing starship..."
-    # Install using curl
-    curl -sS https://starship.rs/install.sh | sh -s -- -y
+    # Install to ~/.local/bin
+    curl -sS https://starship.rs/install.sh | sh -s -- -y -b ~/.local/bin
     echo "✅ starship installed successfully"
 }
 
@@ -102,9 +102,9 @@ if command -v apt &> /dev/null; then
             starship)
                 install_starship
                 ;;
-#            zoxide)
-#                install_zoxide
-#                ;;
+            zoxide)
+                install_zoxide
+                ;;
             *)
                 echo "📦 Installing $pkg via apt..."
                 sudo apt install -y "$pkg"
@@ -139,3 +139,4 @@ handle_fastfetch_ascii_art
 
 
 echo "✅ Dotfiles setup complete!"
+exec bash

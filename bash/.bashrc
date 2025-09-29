@@ -119,12 +119,23 @@ if ! shopt -oq posix; then
   fi
 fi
 
-fastfetch
+# Ensure local binaries are available
+export PATH="$HOME/.local/bin:$PATH"
+
+# only run on interactive shells (such as bash, zsh, etc.)
+if [[ $- == *i* ]]; then
+    fastfetch
+fi
 
 # Initialize Starship prompt
 eval "$(starship init bash)"
+# Initialize Zoxide
+eval "$(zoxide init bash)"
 
-tmux new-session -d -s my-session -n main 
-tmux new-window -t my-session:2 -n playground
-tmux select-window -t my-session:1
-tmux attach -t my-session
+# Auto-start tmux only if not already inside
+if command -v tmux &>/dev/null && [ -z "$TMUX" ]; then
+    tmux new-session -d -s my-session -n main 
+    tmux new-window -t my-session:2 -n playground
+    tmux select-window -t my-session:1
+    tmux attach -t my-session
+fi
