@@ -14,9 +14,12 @@ ASCII_DEST="$HOME/ascii/fastfetch-art.txt"
 PACKAGES=(stow tmux fastfetch starship zoxide)
 
 install_fastfetch() {
+    # Your system architecture
+    local arch="amd64"
+
     local version="2.53.0"
-    local url="https://github.com/fastfetch-cli/fastfetch/releases/download/${version}/fastfetch-linux-amd64.deb"
-    local deb_file="/tmp/fastfetch-linux-amd64.deb"
+    local url="https://github.com/fastfetch-cli/fastfetch/releases/download/${version}/fastfetch-linux-${arch}.deb"
+    local deb_file="/tmp/fastfetch-linux-${arch}.deb"
 
     echo "📦 Installing fastfetch..."
 
