@@ -22,6 +22,16 @@ The script will:
     -  Initialization of Starship + Zoxide
     -  Conditional Fastfetch + tmux auto-start
 
+### tmux Customizations
+
+- Changed default prefix key from `Ctrl+b` to `` ` `` (backtick).
+- Mouse support enabled for sanity.
+- Scrollback increased to 10,000 lines (default 2,000).
+- Vim key bindings enabled in scrollmode
+- Pane borders customized (cool looking).
+- 1-based indexing for windows and panes (default starts at 0).
+- Minimalist status bar (cool looking).
+
 ## Undo Setup
 To completely revert changes:
 ```bash
@@ -35,7 +45,6 @@ The script will:
     - Removes starship binary from ~/.local/bin.
     - Removes zoxide binary from ~/.local/bin and its manpages if present.
 - Restart your shell (exec bash) so the clean .bashrc is loaded immediately.
-
 
 ### Notes
 1. Starship and Zoxide are installed locally (~/.local/bin). If you want system-wide install, you can adjust the setup script.
