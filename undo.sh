@@ -11,13 +11,13 @@ cd "$HOME" || exit
 if command -v stow &> /dev/null; then
     for dir in bash starship fastfetch tmux; do
         stow -D --dir="$SCRIPT_DIR" --target="$HOME" "$dir" || true
-        echo "Removed $dir symlink"
+        echo "✅ Removed $dir symlink"
     done
 fi
 
 # Remove installed packages
 sudo apt remove --purge -y fastfetch tmux stow || true
-echo "Uninstalled fastfetch, tmux, and stow"
+echo "✅ Uninstalled fastfetch, tmux, and stow"
 
 # Remove starship stuff
 rm -f "$HOME/.local/bin/starship"
@@ -31,7 +31,7 @@ rm -rf "$HOME/.config/fastfetch.backup"
 # Remove bashrc and tmux stuff
 rm -f "$HOME/.tmux.conf.backup"
 
-echo "🧹 Deleted starship, fastfetch, and tmux configs"
+echo "✅ Deleted starship, fastfetch, and tmux configs"
 
 # Use bashrc backup config
 mv "$HOME/.bashrc.backup" "$HOME/.bashrc"

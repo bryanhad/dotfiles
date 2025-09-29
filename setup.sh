@@ -77,12 +77,12 @@ handle_fastfetch_ascii_art() {
     if [ ! -f "$ASCII_DEST" ]; then
         if [ -f "$ASCII_SRC" ]; then
             cp "$ASCII_SRC" "$ASCII_DEST"
-            echo "Added default fastfetch ASCII art to $ASCII_DEST"
+            echo "✅ Added default fastfetch ASCII art to $ASCII_DEST"
         else
-            echo "No ASCII art source file found at $ASCII_SRC, skipping..."
+            echo "⚠️ No ASCII art source file found at $ASCII_SRC, skipping..."
         fi
     else
-        echo "ASCII art already exists at $ASCII_DEST, skipping copy."
+        echo "⚠️ ASCII art already exists at $ASCII_DEST, skipping copy."
     fi
 }
 
@@ -113,7 +113,7 @@ if command -v apt &> /dev/null; then
         esac
     done
 else
-    echo "Error: apt not available. Please install ${PACKAGES[*]} manually."
+    echo "❌ Error: apt not available. Please install ${PACKAGES[*]} manually."
     exit 1
 fi
 
