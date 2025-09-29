@@ -11,7 +11,7 @@ ASCII_SRC="$SCRIPT_DIR/fastfetch-art.txt"
 ASCII_DEST="$HOME/ascii/fastfetch-art.txt"
 
 # packages to be installed
-PACKAGES=(stow tmux fastfetch starship)
+PACKAGES=(stow tmux fastfetch starship zoxide)
 
 install_fastfetch() {
     local version="2.53.0"
@@ -34,16 +34,21 @@ install_fastfetch() {
         fastfetch --gen-config-full
     fi
 
-    echo "✅ fastfetch installed"
+    echo "✅ fastfetch installed successfully"
 }
 
 install_starship() {
-    echo "Installing starship..."
-
+    echo "📦 Installing starship..."
     # Install using curl
     curl -sS https://starship.rs/install.sh | sh -s -- -y
+    echo "✅ starship installed successfully"
+}
 
-    echo "✅ starship installed"
+install_zoxide() {
+    echo "📦 Installing zoxide..."
+    # Install using curl
+    curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
+    echo "✅ zoxide installed successfully"
 }
 
 backup_if_exists() {
@@ -97,9 +102,13 @@ if command -v apt &> /dev/null; then
             starship)
                 install_starship
                 ;;
+#            zoxide)
+#                install_zoxide
+#                ;;
             *)
                 echo "📦 Installing $pkg via apt..."
                 sudo apt install -y "$pkg"
+                echo "✅ $pkg installed successfully"
                 ;;
         esac
     done

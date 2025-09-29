@@ -76,7 +76,7 @@ truncation_symbol = "…/"
 symbol = ""
 style = "bg:color_aqua"
 format = '[[ $symbol $branch ](fg:color_fg0 bg:color_aqua)]($style)'
-truncation_length = 10
+# truncation_length = 20
 
 [git_status]
 style = "bg:color_aqua"
@@ -152,13 +152,13 @@ style = "bg:color_bg1"
 format = '[[  $time ](fg:color_fg0 bg:color_bg1)]($style)'
 
 [line_break]
-disabled = true
+disabled = false
 
 [character]
-disabled = true
-success_symbol = '[](bold fg:color_green)'
-error_symbol = '[](bold fg:color_red)'
-vimcmd_symbol = '[](bold fg:color_green)'
+disabled = false
+success_symbol = '[](bold fg:color_orange)'
+error_symbol = '[](bold fg:color_orange)'
+vimcmd_symbol = '[](bold fg:color_orange)'
 vimcmd_replace_one_symbol = '[](bold fg:color_purple)'
 vimcmd_replace_symbol = '[](bold fg:color_purple)'
 vimcmd_visual_symbol = '[](bold fg:color_yellow)'

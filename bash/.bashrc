@@ -124,4 +124,7 @@ fastfetch
 # Initialize Starship prompt
 eval "$(starship init bash)"
 
-tmux new -A -n main -s my-sess
+tmux new-session -d -s my-session -n main 
+tmux new-window -t my-session:2 -n playground
+tmux select-window -t my-session:1
+tmux attach -t my-session
