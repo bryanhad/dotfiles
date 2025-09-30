@@ -1,8 +1,8 @@
-# My Dotfiles Setup
+# 💻 My Dotfiles Setup
 
 My custom setup for `bash`, `tmux`, `Fastfetch`, and `Starship` using `GNU Stow`.
 
-## Quick Start
+## 🚀 Quick Start
 ```bash
 git clone <repo-url> ~/dotfiles-repo
 cd ~/dotfiles-repo
@@ -10,7 +10,7 @@ cd ~/dotfiles-repo
 ```
 
 The script will:
-- Install missing packages: stow, tmux, fastfetch, starship, zoxide.
+- Install missing packages: stow, fzf, tmux, fastfetch, starship, zoxide.
     -  fastfetch → installed via `.deb` (apt-compatible)
     -  starship → installed via curl (binary to `~/.local/bin`)
     -  zoxide → installed via curl (binary to `~/.local/bin`)
@@ -32,7 +32,7 @@ The script will:
 - 1-based indexing for windows and panes (default starts at 0).
 - Minimalist status bar (cool looking).
 
-## Undo Setup
+## 🔄️ Undo Setup
 To completely revert changes:
 ```bash
 ./undo.sh
@@ -59,7 +59,7 @@ This will:
 - Skip uninstalling apt packages, Starship, and Zoxide.
 - Still restart your shell for a clean environment.
 
-### Notes
+## 📝 Notes
 1. Starship and Zoxide are installed locally (`~/.local/bin`). If you want system-wide install, you can adjust the setup script.
 2. If you run into `stow` warnings like:
     ```bash
