@@ -70,7 +70,7 @@ add_symlinks() {
     # Loop through each subdirectory (bash, fastfetch, starship, …) and stow it
     for dir in */; do
         # only run stow if $dir is a directory
-        if [ -d "${dir}" ]; then
+        if [ -d "${dir}" ] && [ "${dir}" != "scripts/" ]; then
             echo "Stowing ${dir}..."
             stow --restow --dir="${SCRIPT_DIR}" --target="${HOME}" "${dir}"
         fi
